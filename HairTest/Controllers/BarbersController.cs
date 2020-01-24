@@ -10,7 +10,7 @@ using Newtonsoft.Json;
 namespace HairTest.Controllers
 {
     [ApiController]
-    [Route("[barbers]")]
+    [Route("[controller]")]
     public class BarbersController : ControllerBase
     {
         
@@ -24,12 +24,12 @@ namespace HairTest.Controllers
         }
 
         [HttpGet]
-        public IActionResult List()
+        public IActionResult Get()
         {
             var jsonResult = JsonConvert.SerializeObject(barberRepository.AllBarbers);
             return Content(jsonResult);
         }
-        [HttpGet("{id}")]
+        [HttpGet("{barberId}")]
         public IActionResult GetBarber(int barberId)
         {
             var barber = barberRepository.GetBarberById(barberId);
