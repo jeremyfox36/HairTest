@@ -7,6 +7,6 @@ namespace HairTest.Models
     {
         IEnumerable<Barber> AllBarbers { get; }
         IEnumerable<Barber> GetNearestBarbers { get; }
-        Barber GetBarberById(int barberId);
+        Barber GetBarberById(string barberId);
     }
 }

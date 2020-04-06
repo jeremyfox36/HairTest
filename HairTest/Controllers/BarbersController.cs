@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using HairTest.Models;
+﻿using HairTest.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
@@ -22,7 +19,7 @@ namespace HairTest.Controllers
             _logger = logger;
             barberRepository = _barberRepository;
         }
-
+        [Authorize]
         [HttpGet]
         public IActionResult Get()
         {
@@ -30,7 +27,7 @@ namespace HairTest.Controllers
             return Content(jsonResult);
         }
         [HttpGet("{barberId}")]
-        public IActionResult GetBarber(int barberId)
+        public IActionResult GetBarber(string barberId)
         {
             var barber = barberRepository.GetBarberById(barberId);
             if (barber == null)
